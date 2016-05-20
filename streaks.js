@@ -160,6 +160,16 @@
     appendSmallText(parentEle, text);
   }
 
+  let renderStreak = function(parentEle, streak) {
+    if (streak !== null) {
+      appendLargeText(parentEle, streak.days + ' days');
+      appendStreakSpan(parentEle, streak);
+    } else {
+      appendLargeText(parentEle, '0 days');
+      appendSmallText(parentEle, 'Rock - Hard Place');
+    }
+  }
+
   // Render year of contributions
   let year = document.createElement('div');
   applyPaneStyle(year, true);
@@ -172,20 +182,14 @@
   let longest = document.createElement('div');
   applyPaneStyle(longest, true);
   appendSmallText(longest, 'Longest streak');
-  if (longestStreak !== null) {
-    appendLargeText(longest, longestStreak.days + ' days');
-    appendStreakSpan(longest, longestStreak);
-  }
+  renderStreak(longest, longestStreak);
   container.appendChild(longest);
 
   // Render current streak
   let current = document.createElement('div');
   applyPaneStyle(current, false);
   appendSmallText(current, 'Current streak');
-  if (currentStreak !== null) {
-    appendLargeText(current, currentStreak.days + ' days');
-    appendStreakSpan(current, currentStreak);
-  }
+  renderStreak(current, currentStreak);
   container.appendChild(current);
 
   into.appendChild(container);
