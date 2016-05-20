@@ -71,9 +71,11 @@
 
   if (streaks.length > 0) {
     let today = getDate(days[days.length - 1]);
+    let yesterday = getDate(days[days.length - 2]);
     let lastStreak = streaks[streaks.length - 1];
 
-    if (lastStreak.end.timestamp === today.timestamp) {
+    if (lastStreak.end.timestamp === today.timestamp ||
+        lastStreak.end.timestamp === yesterday.timestamp) {
       currentStreak = lastStreak;
     }
   }
@@ -174,7 +176,7 @@
   let year = document.createElement('div');
   applyPaneStyle(year, true);
   appendSmallText(year, 'Year of contributions');
-  appendLargeText(year, totalContributions  + ' total');
+  appendLargeText(year, totalContributions.toLocaleString()  + ' total');
   appendSmallText(year, fullDate(firstDay) + ' - ' + fullDate(lastDay));
   container.appendChild(year);
 
