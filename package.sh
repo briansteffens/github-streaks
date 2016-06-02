@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-zip github-streaks.xpi manifest.json streaks.js
+zip github-streaks.xpi manifest.json streaks.user.js
