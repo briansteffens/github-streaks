@@ -218,7 +218,17 @@
     into.appendChild(container);
   };
 
-  setInterval(addStreaks, 250);
+  // Add streaks whenever the pjax container is repopulated (AJAX update)
+  new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      if (mutation.addedNodes.length > 0) {
+        console.log('adding');
+        addStreaks();
+      }
+    });
+  }).observe(document.querySelector('#js-pjax-container'), {
+    childList: true
+  });
 
   addStreaks();
 })();
