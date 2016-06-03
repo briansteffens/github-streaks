@@ -222,7 +222,6 @@
   new MutationObserver(function(mutations) {
     mutations.forEach(function(mutation) {
       if (mutation.addedNodes.length > 0) {
-        console.log('adding');
         addStreaks();
       }
     });
