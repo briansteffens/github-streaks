@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         GitHub Streaks
 // @namespace    https://github.com/briansteffens/github-streaks
-// @version      1.2
+// @version      1.3
 // @description  Add GitHub streaks back into your browser
 // @author       Brian Steffens
 // @copyright    2016+, Brian Steffens
@@ -101,11 +101,13 @@
     }
 
     // Render output
-    let into = document.querySelector('#contributions-calendar');
+    let into = document.querySelector('.js-calendar-graph').parentNode;
+    into.style.setProperty("padding-bottom", "0px", "important");
 
     let container = document.createElement('div');
     container.id = 'streak-container';
     container.style.display = 'flex';
+    container.style.paddingTop = '10px';
 
     let applyPaneStyle = function(ele, borderRight) {
       ele.style.flex = '1 1 auto';
